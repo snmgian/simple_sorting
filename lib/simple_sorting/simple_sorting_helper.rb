@@ -11,7 +11,7 @@ module SimpleSortingHelper
     
     sort_dir = params[:sort_field] == sort_field && params[:sort_dir] == 'asc' ? 'desc' : 'asc'
 
-    link_to "#{text} #{sort_dir}", request.parameters.merge( {:sort_field => sort_field, :sort_dir => sort_dir}, options )
+    link_to "#{text}", request.parameters.merge( {:sort_field => sort_field, :sort_dir => sort_dir} ), options 
   end
 
 end
