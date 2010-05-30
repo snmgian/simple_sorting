@@ -1,0 +1,64 @@
+= SimpleSorting
+
+SimpleSorting helps to make sorting more easier for Rails. It provides sorting over column's model and over associated models.
+
+When sorting by associated models it includes objects who doesn't are associated, btw uses LEFT JOINs not INNER JOINs like searchlogic does.
+
+At this moment it's not possible to chain sorting calls because named scopes doesn't support sort chaining. At Rails 3.0 that behaviour may change.
+
+== Install & Use
+
+Install as a plugin:
+
+  $> script/plugin install git://github.com/snmgian/simple_sorting.git
+  
+  Move to the plugin directory and run the tests
+  $> cd vendor/plugins/simple_sorting
+  $> rake
+
+  If all tests passed you're ready.
+
+
+== ActiveRecord Example
+
+* Sorting by a column's model:
+
+    Person.asc_by_name # People set sorted by name in ascending order
+
+    Person.desc_by_age # People set sorted by age in descending order
+
+
+* Sorting by an associated model in a :belongs_to association:
+
+    Person.asc_by_planet_name # People set sorted by theirs planet's name in ascending order
+
+    Person.desc_by_planet_name # People set sorted by theirs planet's name in descending order
+
+
+* Sorting by an associated model in a :has_one association:
+
+    Person.asc_by_tie_color # People set sorted by theirs tie's color in ascending order
+
+    Person.desc_by_tie_color # People set sorted by theirs tie's color in descending order
+
+        
+== View and Controller Example
+
+* The following renders a link that will pass in the request the parameters for sorting. The sorting direction is extracted from the request params or defaults to 'asc'
+    sort_link 'Name', 'name'
+
+* The following render a link to sort by the associated tie's color
+    sort_link 'Tie', 'tie.color'
+
+* In the action method simply call to simple_sorting passing the ActiveRecord finder and a Hash with the :sort_dir and :sort_field params
+    @people = simple_sorting(Person, params)
+
+== Acknowledgements
+The technique used here is based on simplelogic.
+
+
+== .
+Copyright (c) 2010 "snmgian", released under LGPL v3 license. 
+
+== .
+Contact at: snmgian at gmail dot com

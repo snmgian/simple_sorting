@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README [SimpleSorting]</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }<\/style>" )
+
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>2010-05-30 16:29:47 -0300</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../classes/SimpleSorting.html">SimpleSorting</a></h1>
+<p>
+<a href="../classes/SimpleSorting.html">SimpleSorting</a> helps to make
+sorting more easier for Rails. It provides sorting over column&#8217;s
+model and over associated models.
+</p>
+<p>
+When sorting by associated models it includes objects who doesn&#8217;t are
+associated, btw uses LEFT JOINs not INNER JOINs like searchlogic does.
+</p>
+<p>
+At this moment it&#8217;s not possible to chain sorting calls because named
+scopes doesn&#8217;t support sort chaining. At Rails 3.0 that behaviour may
+change.
+</p>
+<h2>Install &amp; Use</h2>
+<p>
+Install as a plugin:
+</p>
+<pre>
+  $&gt; script/plugin install git://github.com/snmgian/simple_sorting.git
+
+  Move to the plugin directory and run the tests
+  $&gt; cd vendor/plugins/simple_sorting
+  $&gt; rake
+
+  If all tests passed you're ready.
+</pre>
+<h2>ActiveRecord Example</h2>
+<ul>
+<li>Sorting by a column&#8217;s model:
+
+<pre>
+  Person.asc_by_name # People set sorted by name in ascending order
+
+  Person.desc_by_age # People set sorted by age in descending order
+</pre>
+</li>
+<li>Sorting by an associated model in a :belongs_to association:
+
+<pre>
+  Person.asc_by_planet_name # People set sorted by theirs planet's name in ascending order
+
+  Person.desc_by_planet_name # People set sorted by theirs planet's name in descending order
+</pre>
+</li>
+<li>Sorting by an associated model in a :has_one association:
+
+<pre>
+  Person.asc_by_tie_color # People set sorted by theirs tie's color in ascending order
+
+  Person.desc_by_tie_color # People set sorted by theirs tie's color in descending order
+</pre>
+</li>
+</ul>
+<h2>View and Controller Example</h2>
+<ul>
+<li>The following renders a link that will pass in the request the parameters
+for sorting. The sorting direction is extracted from the request params or
+defaults to &#8216;asc&#8217;
+
+<pre>
+  sort_link 'Name', 'name'
+</pre>
+</li>
+<li>The following render a link to sort by the associated tie&#8217;s color
+
+<pre>
+  sort_link 'Tie', 'tie.color'
+</pre>
+</li>
+<li>In the action method simply call to simple_sorting passing the ActiveRecord
+finder and a Hash with the :sort_dir and :sort_field params
+
+<pre>
+  @people = simple_sorting(Person, params)
+</pre>
+</li>
+</ul>
+<h2>Acknowledgements</h2>
+<p>
+The technique used here is based on simplelogic.
+</p>
+<h2>.</h2>
+<p>
+Copyright &#169; 2010 &#8220;snmgian&#8221;, released under LGPL v3
+license.
+</p>
+<h2>.</h2>
+<p>
+Contact at: snmgian at gmail dot com
+</p>
+
+    </div>
+
+   </div>
+
+
+  </div>
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+    <!-- if method_list -->
+
+
+
+
+  </div>
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
