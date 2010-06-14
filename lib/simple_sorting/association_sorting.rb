@@ -48,9 +48,7 @@ module SimpleSorting
           a.name.to_s + "_id"
         end
 
-        a_join = 'LEFT'
-
-        d = {:order_as => $1.upcase, :a_macro => a.macro, :a_table => a_table, :a_pk => a_pk, :a_fk => a_fk, :column => $3}
+        {:order_as => $1.upcase, :a_macro => a.macro, :a_table => a_table, :a_pk => a_pk, :a_fk => a_fk, :column => $3}
       end
     end
     
@@ -87,7 +85,7 @@ module SimpleSorting
           a_bt.name.to_s + "_id"
         end
 
-        d = {:order_as => ($1).upcase, :a_macro => a.macro, :a_table => a_table, :a_pk => a_pk, :a_fk => a_fk, :column => $3}
+        {:order_as => ($1).upcase, :a_macro => a.macro, :a_table => a_table, :a_pk => a_pk, :a_fk => a_fk, :column => $3}
       end
     end
 
